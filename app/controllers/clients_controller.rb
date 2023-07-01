@@ -6,7 +6,7 @@ class ClientsController < ApplicationController
 
     def index
         clients = Client.all
-        render json: client
+        render json: clients
     end
 
     def create
