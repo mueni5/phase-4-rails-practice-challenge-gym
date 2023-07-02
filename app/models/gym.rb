@@ -3,13 +3,14 @@ class Gym < ApplicationRecord
     has_many :memberships, through: :clients
 
     validates :name, presence: true
-    validates :age, presence: true, numericality: { greater_than_or_equal_to: 18 }
+    validates :memberships, presence: true
 
-    validate :age_validation
+    validate :membership_validation
 
-    def age_validation
-        if age.nil?
-            errors.add(:age, "must be present" )
+    def membership_validation
+        if memberships.empty?
+          errors.add(:memberships, "gym not found")
         end
-    end
+      end
+      
 end
